@@ -1,0 +1,42 @@
+---
+// DFM custom components
+export interface Props {
+  title: string;
+  stepNumber: number;
+}
+
+const { title, stepNumber } = Astro.props;
+---
+<div class="build-step" data-step="{stepNumber}">
+  <details open={stepNumber === 1}>
+    <summary>
+      <div class="step-header">
+        <div class="step-checkbox">
+          <input type="checkbox" id={`step-${stepNumber}`} />
+          <label for={`step-${stepNumber}`}></label>
+        </div>
+        <span class="step-number">{stepNumber}.</span>
+        <span class="step-title">{title}</span>
+        <span class="step-toggle">▼</span>
+      </div>
+    </summary>
+    <div class="step-content">
+      <slot />
+    </div>
+  </details>
+</div>
+
+<style>
+  .build-step { border: 1px solid var(--sl-color-gray-5, #444); border-radius: 0.5rem; background: var(--sl-color-gray-6, #1a1a1a); transition: all 0.2s ease; }
+  .build-step.completed { opacity: 0.7; border-color: var(--sl-color-green, #4ade80); }
+  .build-step details > summary { list-style: none; cursor: pointer; }
+  .build-step details > summary::-webkit-details-marker { display: none; }
+  .step-header { display: flex; align-items: center; gap: 1rem; padding: 1rem; user-select: none; }
+  .step-checkbox { display: flex; align-items: center; }
+  .step-checkbox input { width: 1.25rem; height: 1.25rem; cursor: pointer; accent-color: var(--sl-color-green, #4ade80); }
+  .step-number { font-weight: 700; color: var(--sl-color-gray-3, #999); }
+  .step-title { font-weight: 600; flex: 1; color: var(--sl-color-white, #fff); }
+  .step-toggle { color: var(--sl-color-gray-3, #999); transition: transform 0.2s ease; }
+  details[open] .step-toggle { transform: rotate(180deg); }
+  .step-content { padding: 0 1rem 1rem 3.5rem; color: var(--sl-color-gray-2, #ccc); }
+</style>

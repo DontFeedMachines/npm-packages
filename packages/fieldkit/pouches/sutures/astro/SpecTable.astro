@@ -1,0 +1,64 @@
+---
+// DFM custom components
+export interface Props {
+  title?: string;
+  specs: Record<string, string>;
+}
+
+const { title = "Hardware Specifications", specs } = Astro.props;
+---
+<div class="spec-table-container">
+  <h3>{title}</h3>
+  <table class="spec-table">
+    <tbody>
+      {Object.entries(specs).map(([key, value]) => (
+        <tr>
+          <td class="spec-key">{key}</td>
+          <td class="spec-value">{value}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .spec-table-container {
+    margin: 2rem 0;
+    border: 1px solid var(--sl-color-gray-5, #444);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: var(--sl-color-black, #111);
+  }
+  
+  .spec-table-container h3 {
+    margin: 0;
+    padding: 1rem;
+    background: var(--sl-color-gray-6, #222);
+    border-bottom: 1px solid var(--sl-color-gray-5, #444);
+    font-size: 1.1rem;
+    color: var(--sl-color-white, #fff);
+  }
+
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .spec-table tr:not(:last-child) {
+    border-bottom: 1px solid var(--sl-color-gray-5, #444);
+  }
+
+  .spec-key {
+    padding: 1rem;
+    font-weight: 600;
+    color: var(--sl-color-gray-2, #ccc);
+    width: 35%;
+    background: var(--sl-color-gray-6, #1a1a1a);
+  }
+
+  .spec-value {
+    padding: 1rem;
+    color: var(--sl-color-white, #fff);
+    font-family: monospace;
+  }
+</style>

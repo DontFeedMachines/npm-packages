@@ -1,0 +1,80 @@
+---
+import { config, getTranslations } from "../../../src/wiki/config.ts";
+import { markdownify } from "../../../src/wiki/textConverter.ts";
+import { teletextPages } from "../../../src/wiki/teletext.ts";
+
+type Link = { name: string; url: string; page?: string };
+type Group = { title: string; links: Link[] };
+
+const menu = await getTranslations(Astro.currentLocale || "en");
+// numbered from the sidebar the same way the home index is, so the two never disagree
+const wiki: Group = {
+  title: "THIS WIKI",
+  links: teletextPages(Astro.locals.starlightRoute.sidebar).map((p) => ({ name: p.label, url: p.href, page: String(p.page) })),
+};
+const groups = [wiki, ...(Object.values(menu.footer ?? {}) as Group[])];
+const bands = ["red", "green", "yellow", "cyan"];
+const external = (url: string) => /^https?:\/\//.test(url);
+---
+
+<footer class="tt-footer">
+  <div class="container">
+    <div class="tt-footer-grid">
+      {
+        groups.map((g, i) => (
+          <nav aria-label={g.title}>
+            <h2 class={`tt-footer-band tt-fx-${bands[i % bands.length]}`}>{g.title}</h2>
+            <ul>
+              {g.links.map((l) => (
+                <li>
+                  <a href={l.url} rel={external(l.url) ? "noopener" : undefined}>
+                    {l.page && <span class="tt-footer-page">{l.page}</span>}
+                    {l.name}
+                    {external(l.url) && <span class="tt-footer-out" aria-hidden="true">&#8599;</span>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))
+      }
+    </div>
+    <div class="tt-footer-bottom">
+      <p set:html={markdownify(config?.params?.copyright)} />
+      <p class="tt-footer-sign">P100 {config.site.status_name} // END OF PAGE</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .tt-footer { border-top: 2px solid var(--tt-ink); margin-top: 48px; }
+  .tt-footer-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 0 0 40px; }
+  .tt-footer nav { min-width: 0; }
+  .tt-footer-band {
+    display: block; margin: 0 0 14px !important; padding: 9px 12px; color: #000 !important;
+    font: 400 15px/1.1 var(--tt-font-tele) !important; letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  .tt-footer ul { list-style: none; margin: 0; padding: 0 12px; }
+  .tt-footer li { margin: 0 !important; }
+  .tt-footer li a {
+    display: flex; align-items: baseline; gap: 10px; padding: 5px 0; color: var(--tt-ink); text-decoration: none; font-size: 1rem;
+  }
+  .tt-footer li a:hover, .tt-footer li a:focus-visible { color: var(--tt-link); text-decoration: underline; }
+  .tt-footer-page { font: 400 14px/1 var(--tt-font-tele); color: var(--tt-yellow); }
+  :global(:root[data-theme="light"]) .tt-footer-page { color: var(--tt-blue); }
+  .tt-footer-out { font-size: 0.8em; color: var(--tt-muted); }
+  .tt-footer-bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 24px;
+    border-top: 2px dashed var(--tt-rule); padding: 18px 0 32px; font: 400 14px/1.4 var(--tt-font-tele); color: var(--tt-muted);
+  }
+  .tt-footer-bottom p { margin: 0; }
+  .tt-footer-bottom :global(a) { color: var(--tt-link); }
+  .tt-footer-sign { color: var(--tt-yellow); }
+  :global(:root[data-theme="light"]) .tt-footer-sign { color: #000; }
+  @media (max-width: 800px) {
+    .tt-footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
+  }
+  @media (max-width: 480px) {
+    .tt-footer-grid { grid-template-columns: 1fr; }
+  }
+</style>

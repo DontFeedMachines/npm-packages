@@ -1,0 +1,19 @@
+---
+// DFM custom components
+interface Props { seed: string; w?: number; h?: number }
+const { seed, w = 120, h = 28 } = Astro.props;
+// deterministic bars from seed chars
+const bars: { x: number; bw: number }[] = [];
+let x = 0;
+let i = 0;
+while (x < w - 2) {
+  const c = seed.charCodeAt(i % seed.length) + i * 7;
+  const bw = (c % 3) + 1;
+  bars.push({ x, bw });
+  x += bw + ((c >> 2) % 3) + 1;
+  i++;
+}
+---
+<svg class="barcode" viewBox={`0 0 ${w} ${h}`} width={w} height={h} aria-hidden="true">
+  {bars.map((b) => <rect x={b.x} y="0" width={b.bw} height={h} />)}
+</svg>

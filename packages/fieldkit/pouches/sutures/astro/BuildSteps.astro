@@ -1,0 +1,63 @@
+---
+// DFM custom components
+// expects <BuildStep> components as children
+---
+<div class="build-steps-container">
+  <div class="progress-bar">
+    <div class="progress-fill" id="build-progress"></div>
+  </div>
+  <div class="steps-list">
+    <slot />
+  </div>
+</div>
+
+<script>
+  class BuildSteps {
+    constructor() {
+      this.init();
+    }
+    
+    init() {
+      const steps = document.querySelectorAll('.build-step');
+      const progress = document.getElementById('build-progress');
+      
+      if (!steps.length || !progress) return;
+      
+      const updateProgress = () => {
+        const completed = document.querySelectorAll('.build-step input[type="checkbox"]:checked').length;
+        const percent = (completed / steps.length) * 100;
+        progress.style.width = `${percent}%`;
+      };
+      
+      steps.forEach((step, index) => {
+        const checkbox = step.querySelector('input[type="checkbox"]');
+        if (checkbox) {
+          checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+              step.classList.add('completed');
+              const nextStep = steps[index + 1];
+              if (nextStep) {
+                const details = nextStep.querySelector('details');
+                if (details) details.open = true;
+              }
+            } else {
+              step.classList.remove('completed');
+            }
+            updateProgress();
+          });
+        }
+      });
+      
+      updateProgress();
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => new BuildSteps());
+</script>
+
+<style>
+  .build-steps-container { margin: 2rem 0; }
+  .progress-bar { height: 8px; background: var(--sl-color-gray-5, #333); border-radius: 4px; margin-bottom: 1.5rem; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0%; background: var(--sl-color-accent, #3b82f6); transition: width 0.3s ease; }
+  .steps-list { display: flex; flex-direction: column; gap: 1rem; }
+</style>

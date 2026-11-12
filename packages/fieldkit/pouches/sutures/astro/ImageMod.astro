@@ -1,0 +1,66 @@
+---
+// DFM custom components
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  loading?: "eager" | "lazy" | null | undefined;
+  decoding?: "async" | "auto" | "sync" | null | undefined;
+  fetchpriority?: "high" | "low" | "auto" | null | undefined;
+  format?: "auto" | "avif" | "jpeg" | "png" | "svg" | "webp";
+  class?: string;
+  style?: any;
+  fit?: "cover" | "contain" | "fill" | "none" | "scale-down";
+}
+
+let {
+  src,
+  alt,
+  width,
+  height,
+  loading,
+  decoding,
+  fetchpriority,
+  class: className,
+  format,
+  style,
+  fit,
+} = Astro.props;
+
+
+
+const images = import.meta.glob("/src/assets/**/*.{jpeg,jpg,png,gif,svg,webp}");
+const normalizedSrc = src.startsWith("/") ? src : `/${src.replace(/^\.\//, "")}`;
+
+const isValidPath = images[normalizedSrc] ? true : false;
+
+
+!isValidPath &&
+  console.error(
+    `\x1b[31mImage not found - ${src}.\x1b[0m Make sure the image is in the /src/assets folder.`,
+  );
+
+
+---
+
+{
+  isValidPath && (
+    <Image
+      src={images[normalizedSrc]() as Promise<{ default: ImageMetadata }>}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding={decoding}
+      fetchpriority={fetchpriority}
+      class={className}
+      format={format}
+      style={style}
+      fit={fit ? fit : "contain"}
+    />
+  )
+}

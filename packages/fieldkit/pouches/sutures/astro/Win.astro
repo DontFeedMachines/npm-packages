@@ -1,0 +1,13 @@
+---
+// DFM custom components
+interface Props { title: string; n?: string; id?: string; class?: string; tone?: "pink" | "mint" | "lemon" | "sky" }
+const { title, n, id, class: cls, tone } = Astro.props;
+---
+<section class:list={["win", tone && `t-${tone}`, cls]} id={id}>
+  <header class="win-bar">
+    <span class="win-t">{title}</span>
+    {n && <span class="win-n">{n}</span>}
+    <span class="win-ctl" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span>
+  </header>
+  <div class="win-in"><slot /></div>
+</section>

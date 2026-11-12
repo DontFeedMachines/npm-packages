@@ -1,0 +1,10 @@
+---
+// unique symbol for running index in locals
+const currentGroupIndexSymbol = Symbol.for('starlight-sidebar-group-index');
+const locals = Astro.locals as App.Locals & { [currentGroupIndexSymbol]: number };
+
+const index = locals[currentGroupIndexSymbol] || 0;
+locals[currentGroupIndexSymbol] = index + 1;
+---
+
+<sl-sidebar-restore data-index={index}></sl-sidebar-restore>

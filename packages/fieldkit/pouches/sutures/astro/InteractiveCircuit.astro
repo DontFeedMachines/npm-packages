@@ -1,0 +1,192 @@
+---
+// DFM custom components
+export interface Props {
+  title?: string;
+  svgPath: string; // path to raw SVG content or could be passed via slot
+}
+
+const { title = "Circuit Diagram" } = Astro.props;
+---
+<div class="interactive-circuit">
+  <div class="circuit-header">
+    <h3>{title}</h3>
+    <div class="circuit-controls">
+      <button class="circuit-btn" data-action="zoom-in">+</button>
+      <button class="circuit-btn" data-action="zoom-out">-</button>
+      <button class="circuit-btn" data-action="reset">Reset</button>
+    </div>
+  </div>
+  
+  <div class="circuit-viewport">
+    <div class="circuit-content" id="circuit-container">
+      <slot />
+    </div>
+    
+    <div class="circuit-info-panel" id="circuit-info">
+      <h4 id="info-title">Component Info</h4>
+      <p id="info-desc">Click any highlighted component on the diagram to see its details.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  class InteractiveCircuit {
+    constructor() {
+      this.container = document.getElementById('circuit-container');
+      this.infoPanel = document.getElementById('circuit-info');
+      this.infoTitle = document.getElementById('info-title');
+      this.infoDesc = document.getElementById('info-desc');
+      this.scale = 1;
+      
+      this.init();
+    }
+    
+    init() {
+      if (!this.container) return;
+      
+      document.querySelectorAll('.circuit-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const action = (e.target as HTMLButtonElement).dataset.action;
+          if (action === 'zoom-in') this.scale = Math.min(this.scale + 0.2, 3);
+          if (action === 'zoom-out') this.scale = Math.max(this.scale - 0.2, 0.5);
+          if (action === 'reset') this.scale = 1;
+          
+          this.container.style.transform = `scale(${this.scale})`;
+        });
+      });
+      
+      // interactive svg targets require class 'interactive-node' with data-title and data-desc
+      const nodes = this.container.querySelectorAll('.interactive-node');
+      nodes.forEach(node => {
+        node.addEventListener('click', (e) => {
+          nodes.forEach(n => n.classList.remove('active-node'));
+          
+          const target = e.currentTarget as SVGElement;
+          target.classList.add('active-node');
+          
+          if (this.infoTitle && this.infoDesc) {
+            this.infoTitle.textContent = target.dataset.title || 'Unknown Component';
+            this.infoDesc.textContent = target.dataset.desc || 'No description available.';
+            this.infoPanel.classList.add('visible');
+          }
+        });
+      });
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => new InteractiveCircuit());
+</script>
+
+<style>
+  .interactive-circuit {
+    border: 1px solid var(--sl-color-gray-5, #444);
+    border-radius: 0.5rem;
+    background: var(--sl-color-black, #111);
+    margin: 2rem 0;
+    overflow: hidden;
+  }
+  
+  .circuit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--sl-color-gray-6, #1a1a1a);
+    border-bottom: 1px solid var(--sl-color-gray-5, #444);
+  }
+  
+  .circuit-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--sl-color-white, #fff);
+  }
+  
+  .circuit-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .circuit-btn {
+    background: var(--sl-color-gray-5, #333);
+    color: var(--sl-color-white, #fff);
+    border: none;
+    border-radius: 4px;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  
+  .circuit-btn:hover {
+    background: var(--sl-color-gray-4, #555);
+  }
+  
+  .circuit-viewport {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .circuit-content {
+    transition: transform 0.2s ease;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .circuit-content :global(svg) {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .circuit-content :global(.interactive-node) {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .circuit-content :global(.interactive-node:hover) {
+    filter: drop-shadow(0 0 5px var(--sl-color-accent, #3b82f6));
+  }
+  
+  .circuit-content :global(.interactive-node.active-node) {
+    filter: drop-shadow(0 0 8px var(--sl-color-green, #4ade80));
+  }
+  
+  .circuit-info-panel {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 300px;
+    background: rgba(17, 17, 17, 0.95);
+    border: 1px solid var(--sl-color-gray-5, #444);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    transform: translateY(120%);
+    transition: transform 0.3s ease;
+  }
+  
+  .circuit-info-panel.visible {
+    transform: translateY(0);
+  }
+  
+  .circuit-info-panel h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--sl-color-accent, #3b82f6);
+    font-size: 1rem;
+  }
+  
+  .circuit-info-panel p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--sl-color-gray-2, #ccc);
+    line-height: 1.4;
+  }
+</style>

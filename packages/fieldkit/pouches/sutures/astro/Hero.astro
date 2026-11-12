@@ -1,0 +1,38 @@
+---
+import Search from "./Search.astro";
+import { teletextPages } from "../../../src/wiki/teletext.ts";
+
+const { data } = Astro.locals.starlightRoute.entry;
+const { title = data.title, tagline } = data.hero || {};
+const { sidebar } = Astro.locals.starlightRoute;
+const pages = teletextPages(sidebar);
+const is404 = Astro.locals.starlightRoute?.id === "404";
+---
+
+<section class="tt-hero">
+  <p class="tt-pagehead"><span class="tt-blue">P100</span> INDEX</p>
+  {title && <h1 class="tt-title" set:html={title} />}
+  {tagline && <p class="tt-tagline" set:html={tagline} />}
+
+  {
+    !is404 && (
+      <>
+        <div class="tt-search search-bar">
+          <Search />
+        </div>
+        <ol class="tt-index" aria-label="sections by page number">
+          {pages.map((p) => (
+            <li>
+              <a href={p.href}>
+                <span class="tt-index-name">{p.label}</span>
+                <span class="tt-leader" aria-hidden="true" />
+                <span class="tt-index-page">P{p.page}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+        <p class="tt-hint">type a page number anywhere to jump to it. / opens search.</p>
+      </>
+    )
+  }
+</section>

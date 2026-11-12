@@ -1,0 +1,51 @@
+---
+// DFM custom components
+// the teletext portal logo: ANSI Shadow lettering, VT323, magenta, crt stripes. any word works
+import { ansi, ansiWidth } from "../../../src/wiki/ansi.ts";
+
+interface Props {
+  text: string;
+  color?: string;
+  size?: number;
+  crt?: boolean;
+  align?: "center" | "left";
+}
+const { text, color = "#f0f", size = 28, crt = true, align = "center" } = Astro.props;
+const art = ansi(text);
+const cols = ansiWidth(art);
+---
+<div class:list={["ansi-wrap", { crt }]} style={`--ansi-color:${color};--ansi-size:${size}px;--ansi-cols:${cols};text-align:${align}`}>
+  <pre class="ansi" role="img" aria-label={text}>{art}</pre>
+</div>
+
+<style>
+  @font-face {
+    font-family: "VT323";
+    src: url("/fonts/VT323-Regular.ttf") format("truetype");
+    font-display: swap;
+  }
+  .ansi-wrap { position: relative; display: block; max-width: 100%; overflow: hidden; }
+  .ansi {
+    display: inline-block;
+    margin: 0;
+    font-family: "VT323", monospace;
+    /* VT323 draws one cell at roughly half its size, so the art fits the column count */
+    font-size: min(var(--ansi-size), calc((100vw - 48px) / (var(--ansi-cols) * 0.5)));
+    line-height: 1;
+    letter-spacing: -1px;
+    white-space: pre;
+    color: var(--ansi-color);
+    text-align: left;
+  }
+  .crt::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+  }
+  :global(html[data-plain]) .crt::after { display: none; }
+</style>

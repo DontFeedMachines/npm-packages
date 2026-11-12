@@ -1,0 +1,51 @@
+---
+import { ttCharSpec, ttMosaicSpec } from "../../../src/lib/teletext-chars";
+
+interface Props {
+  name?: string;
+  char?: string;
+  mosaic?: number | string;
+  separated?: boolean;
+  size?: string;
+  label?: string;
+  title?: string;
+  class?: string;
+}
+
+const { name, char, mosaic, separated = false, size, label, title, class: cls } = Astro.props;
+const isMosaic = mosaic !== undefined;
+const spec = isMosaic
+  ? ttMosaicSpec(mosaic, separated)
+  : ttCharSpec(name ?? char ?? "");
+const fallback = !spec ? (char ?? name ?? "") : "";
+const h = size ?? (isMosaic ? "var(--tt-mosaic-height, 1em)" : "var(--tt-char-size, 0.85em)");
+const w = isMosaic ? `calc((${h}) * 2 / 3)` : h;
+---
+{spec ? (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class:list={["tt-char", isMosaic && "tt-mosaic", cls]}
+    viewBox={`0 0 ${spec.w} ${spec.h}`}
+    fill="currentColor"
+    shape-rendering="crispEdges"
+    style={`--_tt-w:${w};--_tt-h:${h}`}
+    role={label ? "img" : undefined}
+    aria-label={label || undefined}
+    aria-hidden={label ? undefined : "true"}
+  >
+    {title && <title>{title}</title>}
+    <path d={spec.d} />
+  </svg>
+) : (
+  <span class={cls} aria-label={label || undefined}>{fallback}</span>
+)}
+
+<style>
+  .tt-char {
+    display: inline-block;
+    width: var(--_tt-w, 0.85em);
+    height: var(--_tt-h, 0.85em);
+    vertical-align: calc(0.5cap - var(--_tt-h, 0.85em) / 2 + var(--tt-char-voffset, -0.02em));
+    flex: none;
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+// DFM custom components
+export interface Props {
+  level: "low" | "medium" | "high" | "critical";
+  title?: string;
+}
+
+const { level, title } = Astro.props;
+
+const config = {
+  low: { color: "var(--sl-color-green, #4ade80)", icon: "✓", defaultTitle: "OPSEC: LOW RISK" },
+  medium: { color: "var(--sl-color-orange, #fb923c)", icon: "⚠", defaultTitle: "OPSEC: MEDIUM RISK" },
+  high: { color: "var(--sl-color-red, #f87171)", icon: "☠", defaultTitle: "OPSEC: HIGH RISK" },
+  critical: { color: "#ff0000", icon: "☢", defaultTitle: "OPSEC: CRITICAL THREAT" },
+};
+
+const current = config[level];
+---
+<div class={`threat-level-box threat-${level}`}>
+  <div class="threat-header" style={`color: ${current.color}; border-bottom-color: ${current.color};`}>
+    <span class="threat-icon">{current.icon}</span>
+    <span class="threat-title">{title || current.defaultTitle}</span>
+  </div>
+  <div class="threat-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .threat-level-box {
+    margin: 2rem 0;
+    border: 2px solid;
+    border-radius: 0.5rem;
+    background: var(--sl-color-black, #111);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* hazard stripes for critical */
+  .threat-critical::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(45deg, #000, #000 10px, #ff0000 10px, #ff0000 20px);
+  }
+
+  .threat-low { border-color: var(--sl-color-green, #4ade80); }
+  .threat-medium { border-color: var(--sl-color-orange, #fb923c); }
+  .threat-high { border-color: var(--sl-color-red, #f87171); }
+  .threat-critical { border-color: #ff0000; }
+
+  .threat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid;
+    background: var(--sl-color-gray-6, #1a1a1a);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .threat-icon {
+    font-size: 1.25rem;
+  }
+
+  .threat-content {
+    padding: 1rem;
+    color: var(--sl-color-gray-2, #ddd);
+    line-height: 1.6;
+  }
+  
+  .threat-content :global(p:last-child) {
+    margin-bottom: 0;
+  }
+</style>

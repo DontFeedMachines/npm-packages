@@ -1,0 +1,58 @@
+---
+import { config } from "../../../src/wiki/config.ts";
+import Button from "./Button.astro";
+import Section from "./Section.astro";
+
+const { title, description, enable, fill_button, outline_button, background } = config.cta ?? {};
+---
+
+{
+  enable && (
+    <div class="cta-container" style={background ? `--fk-cta-bg: url(${background})` : undefined}>
+      <Section title={title} description={description}>
+        {fill_button?.enable && (
+          <Button
+            label={fill_button.label || "Get Started"}
+            link={fill_button.link || "/getting-started/introduction/overview/"}
+            variant="primary"
+          />
+        )}
+        {outline_button?.enable && (
+          <Button
+            label={outline_button.label || "Get a live demo"}
+            link={
+              outline_button.link || "/getting-started/introduction/overview/"
+            }
+            variant="outline-primary"
+          />
+        )}
+      </Section>
+    </div>
+  )
+}
+
+<style>
+  :global([data-theme="light"]) .cta-container {
+    background-blend-mode: multiply;
+    background-color: #f9fafb;
+  }
+
+  :global([data-theme="dark"]) .cta-container {
+    background: var(--fk-cta-bg, none) no-repeat center;
+    background-size: cover;
+    padding: 1rem;
+    position: relative;
+  }
+</style>
+
+<script>
+  const ctaContainerButton = document.querySelector(".cta-container a");
+
+  const buttonParent = ctaContainerButton?.parentElement;
+
+  if (buttonParent) {
+    buttonParent.style.display = "flex";
+    buttonParent.style.justifyContent = "center";
+    buttonParent.style.gap = "1rem";
+  }
+</script>

@@ -1,0 +1,46 @@
+{
+  "name": "@dontfeedmachines/fieldkit",
+  "version": "0.4.1",
+  "description": "shared Astro components, base CSS, elements, and build helpers for DontFeedMachines sites.",
+  "license": "Apache-2.0",
+  "homepage": "https://dontfeedmachines.com",
+  "type": "module",
+  "files": [
+    "css",
+    "pouches",
+    "src",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    "./base.css": "./css/base.css",
+    "./elements": "./src/elements.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./node/*": "./src/node/*.ts",
+    "./wiki/*": "./src/wiki/*.ts",
+    "./astro": "./pouches/sutures/astro/index.ts",
+    "./astro/*.astro": "./pouches/sutures/astro/*.astro"
+  },
+  "dependencies": {
+    "@noble/ed25519": "3.2.0",
+    "figlet": "1.12.0",
+    "marked": "18.0.14"
+  },
+  "peerDependencies": {
+    "astro": ">=5.0.0",
+    "@astrojs/starlight": ">=0.30.0"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    },
+    "@astrojs/starlight": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

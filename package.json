@@ -1,0 +1,7 @@
+{
+  "name": "dfm-npm-packages",
+  "private": true,
+  "scripts": {
+    "publish:fieldkit": "pnpm --filter @dontfeedmachines/fieldkit publish --access public"
+  }
+}
