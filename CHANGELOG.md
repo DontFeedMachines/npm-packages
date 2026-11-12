@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased] - 2026-11-12
+## [v0.4.1] - 2026-11-12
 
 ### Added
-- Initialized `npm-packages` monorepo with `packages/fieldkit` (`@dontfeedmachines/fieldkit` 0.4.1).
+- initialized `npm-packages` monorepo with `packages/fieldkit` (`@dontfeedmachines/fieldkit` 0.4.1).
