@@ -1,0 +1,32 @@
+{
+  "site": {
+    "title": "Wiki",
+    "logo": "",
+    "logo_darkmode": "",
+    "logo_width": "100",
+    "logo_height": "100",
+    "logo_text": "WIKI",
+    "status_name": "WIKI"
+  },
+  "settings": {
+    "search": true,
+    "theme_switcher": true
+  },
+  "params": {
+    "footer_contact": { "enable": false, "action": "#" },
+    "copyright": ""
+  },
+  "navigation_button": {
+    "enable": false,
+    "label": "Get started",
+    "link": "/"
+  },
+  "cta": {
+    "enable": false,
+    "title": "",
+    "description": "",
+    "background": "",
+    "fill_button": { "enable": false, "label": "Get started", "link": "/" },
+    "outline_button": { "enable": false, "label": "Learn more", "link": "/" }
+  }
+}

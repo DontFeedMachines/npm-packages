@@ -1,11 +1,12 @@
 {
   "name": "@dontfeedmachines/fieldkit",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "shared Astro components, base CSS, elements, and build helpers for DontFeedMachines sites.",
   "license": "Apache-2.0",
   "homepage": "https://dontfeedmachines.com",
   "type": "module",
   "files": [
+    "config",
     "css",
     "pouches",
     "src",

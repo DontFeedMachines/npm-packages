@@ -1,4 +1,9 @@
-# Changelog
+# Changelog // @dontfeedmachines/fieldkit
+
+## [0.4.2] - 2026-11-12
+
+### Added
+- Included `src/node/wiki.ts`, `src/wiki/virtual.d.ts`, and `config/{wiki,menu}.default.json` so `fieldkitWiki` can provide `virtual:dfm-fieldkit/wiki`.
 
 ## [0.4.0] - 2026-11-12
 
