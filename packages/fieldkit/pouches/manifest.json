@@ -1,0 +1,793 @@
+{
+  "schema": 1,
+  "pouches": {
+    "dressings": {
+      "holds": "themes, skins and templates for a platform",
+      "package": "@dontfeedmachines/fieldkit-dressings"
+    },
+    "flint": {
+      "holds": "starters: a whole working skeleton you build on",
+      "package": "@dontfeedmachines/fieldkit-flint"
+    },
+    "sutures": {
+      "holds": "addons and plugins for an app or platform",
+      "package": "@dontfeedmachines/fieldkit-sutures"
+    },
+    "splints": {
+      "holds": "scripts of any format",
+      "package": "@dontfeedmachines/fieldkit-splints"
+    },
+    "triage-tags": {
+      "holds": "not decided yet",
+      "package": "@dontfeedmachines/fieldkit-triage-tags"
+    },
+    "spools": {
+      "holds": "font families, each with its license",
+      "package": "@dontfeedmachines/fieldkit-spools"
+    }
+  },
+  "parts": [
+    {
+      "id": "dressings/skins",
+      "name": "every DFM site as a skin",
+      "format": "DRP",
+      "platform": "css",
+      "origin": "the token stylesheets of all ten sectors, five stations and two commons sites",
+      "license": "Apache-2.0",
+      "out": "a styles folder in your project",
+      "files": [
+        {
+          "from": "dressings/dfm-all-css/skins.css",
+          "to": "dfm-skins.css"
+        }
+      ]
+    },
+    {
+      "id": "dressings/skins-sources",
+      "name": "the original site stylesheets the skins were read from",
+      "format": "DRP",
+      "platform": "css",
+      "origin": "DFM sector, station and commons site stylesheets, copied 2026-11-07",
+      "license": "Apache-2.0",
+      "out": "anywhere, for reference",
+      "files": [
+        {
+          "from": "dressings/dfm-all-css",
+          "to": "dfm-skin-sources",
+          "exclude": [
+            "skins.css"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext",
+      "name": "main teletext skin for any html site",
+      "format": "DRP",
+      "platform": "html",
+      "origin": "help.dontfeedmachines.com, the dfm-teletext skin",
+      "license": "Apache-2.0",
+      "out": "the site's static root",
+      "files": [
+        {
+          "from": "dressings/teletext/dfm-core/css",
+          "to": "css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/js",
+          "to": "js"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/fonts",
+          "to": "fonts"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/shell.html",
+          "to": "dfm-teletext-shell.html",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext-wordpress",
+      "name": "teletext block theme for WordPress",
+      "format": "DRP",
+      "platform": "wordpress",
+      "origin": "dressings/teletext",
+      "license": "Apache-2.0",
+      "out": "wp-content/themes",
+      "files": [
+        {
+          "from": "dressings/teletext/wordpress/dfm-teletext",
+          "to": "dfm-teletext"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/css/dfm-teletext.css",
+          "to": "dfm-teletext/assets/css/dfm-teletext.css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/js/dfm-teletext.js",
+          "to": "dfm-teletext/assets/js/dfm-teletext.js"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/fonts",
+          "to": "dfm-teletext/assets/fonts"
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext-ghost",
+      "name": "teletext theme for Ghost",
+      "format": "DRP",
+      "platform": "ghost",
+      "origin": "dressings/teletext",
+      "license": "Apache-2.0",
+      "out": "content/themes, or zip the folder and upload it in Ghost admin",
+      "files": [
+        {
+          "from": "dressings/teletext/ghost/dfm-teletext",
+          "to": "dfm-teletext"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/css/dfm-teletext.css",
+          "to": "dfm-teletext/assets/css/dfm-teletext.css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/js/dfm-teletext.js",
+          "to": "dfm-teletext/assets/js/dfm-teletext.js"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/fonts",
+          "to": "dfm-teletext/assets/fonts"
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext-hugo",
+      "name": "teletext theme for Hugo",
+      "format": "DRP",
+      "platform": "hugo",
+      "origin": "dressings/teletext",
+      "license": "Apache-2.0",
+      "out": "themes",
+      "files": [
+        {
+          "from": "dressings/teletext/hugo/dfm-teletext",
+          "to": "dfm-teletext"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/css/dfm-teletext.css",
+          "to": "dfm-teletext/static/css/dfm-teletext.css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/js/dfm-teletext.js",
+          "to": "dfm-teletext/static/js/dfm-teletext.js"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/fonts",
+          "to": "dfm-teletext/static/fonts"
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext-starlight",
+      "name": "teletext skin for Astro Starlight",
+      "format": "DRP",
+      "platform": "starlight",
+      "origin": "the dfm-wiki station's teletext.css",
+      "license": "Apache-2.0",
+      "out": "src/styles",
+      "files": [
+        {
+          "from": "dressings/teletext/starlight/dfm-teletext.css",
+          "to": "dfm-teletext.css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/fonts",
+          "to": "fonts"
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext-vscode",
+      "name": "teletext color theme for VS Code, dark and light",
+      "format": "DRP",
+      "platform": "vscode",
+      "origin": "dressings/teletext",
+      "license": "Apache-2.0",
+      "out": "a folder to package with vsce, or ~/.vscode/extensions",
+      "files": [
+        {
+          "from": "dressings/teletext/vscode",
+          "to": "dfm-teletext-vscode"
+        }
+      ]
+    },
+    {
+      "id": "dressings/teletext-obsidian",
+      "name": "teletext theme for Obsidian, dark and light",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "porchlights themes drawer",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/themes",
+      "files": [
+        {
+          "from": "dressings/teletext/obsidian/dfm-teletext/theme.css",
+          "to": "DFM Teletext/theme.css"
+        },
+        {
+          "from": "dressings/teletext/obsidian/dfm-teletext/manifest.json",
+          "to": "DFM Teletext/manifest.json"
+        },
+        {
+          "from": "dressings/teletext/obsidian/dfm-teletext/dfm-plain.css",
+          "to": "DFM Teletext/snippets/dfm-plain.css"
+        },
+        {
+          "from": "dressings/teletext/obsidian/dfm-teletext/fonts",
+          "to": "DFM Teletext/fonts-to-install"
+        },
+        {
+          "from": "dressings/teletext/obsidian/dfm-teletext/README.md",
+          "to": "DFM Teletext/README.md"
+        }
+      ]
+    },
+    {
+      "id": "flint/index-of",
+      "name": "an \"Index of /\" site for any repo, with its GitHub Pages workflow",
+      "format": "DRP",
+      "platform": "github-pages",
+      "origin": "the dfm-resource station (rsrc.dontfeedmachines.com), made generic",
+      "license": "Apache-2.0",
+      "out": "the repo root",
+      "files": [
+        {
+          "from": "flint/index-of/gen-index.py",
+          "to": ".index-of/gen-index.py"
+        },
+        {
+          "from": "flint/index-of/index-of.css",
+          "to": ".index-of/skin/css/index-of.css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/css/dfm-teletext.css",
+          "to": ".index-of/skin/css/dfm-teletext.css"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/js/dfm-teletext.js",
+          "to": ".index-of/skin/js/dfm-teletext.js"
+        },
+        {
+          "from": "dressings/teletext/dfm-core/fonts",
+          "to": ".index-of/skin/fonts"
+        },
+        {
+          "from": "flint/index-of/index-of.yml",
+          "to": ".github/workflows/index-of.yml"
+        },
+        {
+          "from": "flint/index-of/index-of.json",
+          "to": "index-of.json"
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-archive",
+      "name": "DFM Archive for Obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-archive/main.js",
+          "to": "dfm-archive/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-archive/manifest.json",
+          "to": "dfm-archive/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-archive/styles.css",
+          "to": "dfm-archive/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-assay",
+      "name": "DFM Assay for Obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-assay/main.js",
+          "to": "dfm-assay/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-assay/manifest.json",
+          "to": "dfm-assay/manifest.json"
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-canary",
+      "name": "DFM Canary for Obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-canary/main.js",
+          "to": "dfm-canary/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-canary/manifest.json",
+          "to": "dfm-canary/manifest.json"
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-paste-ledger",
+      "name": "DFM Paste Ledger for Obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-paste-ledger/main.js",
+          "to": "dfm-paste-ledger/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-paste-ledger/manifest.json",
+          "to": "dfm-paste-ledger/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-paste-ledger/styles.css",
+          "to": "dfm-paste-ledger/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-publish-strip",
+      "name": "DFM Publish Strip for Obsidian (desktop only)",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-publish-strip/main.js",
+          "to": "dfm-publish-strip/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-publish-strip/manifest.json",
+          "to": "dfm-publish-strip/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-publish-strip/styles.css",
+          "to": "dfm-publish-strip/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-review",
+      "name": "DFM Review for Obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-review/main.js",
+          "to": "dfm-review/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-review/manifest.json",
+          "to": "dfm-review/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-review/styles.css",
+          "to": "dfm-review/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-sieve",
+      "name": "DFM Sieve for Obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-sieve/main.js",
+          "to": "dfm-sieve/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-sieve/manifest.json",
+          "to": "dfm-sieve/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-sieve/styles.css",
+          "to": "dfm-sieve/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-teletext-switcher",
+      "name": "DFM Teletext Switcher for Obsidian, pairs with dressings/teletext-obsidian",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-teletext-switcher/main.js",
+          "to": "dfm-teletext-switcher/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-teletext-switcher/manifest.json",
+          "to": "dfm-teletext-switcher/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-teletext-switcher/styles.css",
+          "to": "dfm-teletext-switcher/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-tool-tree",
+      "name": "DFM Tool Tree for Obsidian (desktop only)",
+      "format": "DRP",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins",
+      "license": "Apache-2.0",
+      "out": "<vault>/.obsidian/plugins",
+      "files": [
+        {
+          "from": "sutures/obsidian/dfm-tool-tree/main.js",
+          "to": "dfm-tool-tree/main.js"
+        },
+        {
+          "from": "sutures/obsidian/dfm-tool-tree/manifest.json",
+          "to": "dfm-tool-tree/manifest.json"
+        },
+        {
+          "from": "sutures/obsidian/dfm-tool-tree/styles.css",
+          "to": "dfm-tool-tree/styles.css",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "sutures/obsidian-source",
+      "name": "source for all nine Obsidian plugins and their shared core, a pnpm workspace",
+      "format": "LIB",
+      "platform": "obsidian",
+      "origin": "protocols tooling, obsidian plugins-src",
+      "license": "Apache-2.0",
+      "out": "a new folder; then pnpm install and build each plugin with its esbuild config",
+      "files": [
+        {
+          "from": "sutures/obsidian",
+          "to": "dfm-obsidian-plugins",
+          "exclude": [
+            "pnpm-lock.yaml"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sutures/astro",
+      "name": "DFM Astro and Starlight UI component kit",
+      "format": "DRP",
+      "platform": "astro",
+      "origin": "DFM shared Astro and Starlight components",
+      "license": "Apache-2.0 and MIT (see LICENSE-DOCKIT.txt)",
+      "out": "src/components/dfm",
+      "files": [
+        {
+          "from": "sutures/astro",
+          "to": "dfm-astro"
+        }
+      ]
+    },
+    {
+      "id": "sutures/godot",
+      "name": "The End Credits addon for Godot 4 (provenance tracker, export gate, runtime credits roll)",
+      "format": "DRP",
+      "platform": "godot",
+      "origin": "The End Credits Godot 4 addon",
+      "license": "Apache-2.0",
+      "out": "your Godot 4 project root",
+      "files": [
+        {
+          "from": "sutures/godot/the-end-credits/addons/end_credits",
+          "to": "addons/end_credits"
+        }
+      ]
+    },
+    {
+      "id": "sutures/macdown",
+      "name": "DFM MacDown Cocoa plugins (anti-flash, glossary, restyler, slash commands)",
+      "format": "DRP",
+      "platform": "macdown",
+      "origin": "DFM MacDown AppKit plugins",
+      "license": "Apache-2.0",
+      "out": "a source folder on macOS; run ./install.sh or make install inside each plugin",
+      "files": [
+        {
+          "from": "sutures/macdown",
+          "to": "dfm-macdown-plugins",
+          "exclude": [
+            "build"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spools/atkinson-hyperlegible-next",
+      "name": "Atkinson Hyperlegible Next",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "Braille Institute",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/atkinson-hyperlegible-next",
+          "to": "atkinson-hyperlegible-next"
+        }
+      ]
+    },
+    {
+      "id": "spools/atkinson-hyperlegible-mono",
+      "name": "Atkinson Hyperlegible Mono",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "Braille Institute",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/atkinson-hyperlegible-mono",
+          "to": "atkinson-hyperlegible-mono"
+        }
+      ]
+    },
+    {
+      "id": "spools/atkinson-hyperlegible-2020",
+      "name": "Atkinson Hyperlegible (2020)",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "Braille Institute",
+      "license": "free for personal and commercial use per the Braille Institute's page, see TERMS.txt",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/atkinson-hyperlegible-2020",
+          "to": "atkinson-hyperlegible-2020"
+        }
+      ]
+    },
+    {
+      "id": "spools/b612-mono",
+      "name": "B612 Mono",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "The B612 Project Authors",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/b612-mono",
+          "to": "b612-mono"
+        }
+      ]
+    },
+    {
+      "id": "spools/bedstead",
+      "name": "Bedstead",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "Ben Harris",
+      "license": "CC0-1.0, see COPYING",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/bedstead",
+          "to": "bedstead"
+        }
+      ]
+    },
+    {
+      "id": "spools/fira-code",
+      "name": "Fira Code",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "The Fira Code Project Authors",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/fira-code",
+          "to": "fira-code"
+        }
+      ]
+    },
+    {
+      "id": "spools/modeseven",
+      "name": "ModeSeven",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "acb, distributed by Galax",
+      "license": "free for non-commercial use only, see TERMS.txt",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/modeseven",
+          "to": "modeseven"
+        }
+      ]
+    },
+    {
+      "id": "spools/press-start-2p",
+      "name": "Press Start 2P",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "The Press Start 2P Project Authors",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/press-start-2p",
+          "to": "press-start-2p"
+        }
+      ]
+    },
+    {
+      "id": "spools/spectral",
+      "name": "Spectral",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "Production Type",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/spectral",
+          "to": "spectral"
+        }
+      ]
+    },
+    {
+      "id": "spools/spline-sans-mono",
+      "name": "Spline Sans Mono",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "The Spline Sans Mono Project Authors",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/spline-sans-mono",
+          "to": "spline-sans-mono"
+        }
+      ]
+    },
+    {
+      "id": "spools/teletext50",
+      "name": "Teletext50",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "Galax",
+      "license": "public domain per the author's page, see TERMS.txt",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/teletext50",
+          "to": "teletext50"
+        }
+      ]
+    },
+    {
+      "id": "spools/vt323",
+      "name": "VT323",
+      "format": "DRP",
+      "platform": "fonts",
+      "origin": "The VT323 Project Authors (Peter Hull)",
+      "license": "OFL-1.1",
+      "out": "a fonts folder",
+      "files": [
+        {
+          "from": "spools/3rd-party-fonts/vt323",
+          "to": "vt323"
+        }
+      ]
+    },
+    {
+      "id": "splints/canon-json",
+      "name": "Deterministic canonical JSON serializer and signature stripper",
+      "format": "DRP",
+      "platform": "node",
+      "origin": "protocols tooling",
+      "license": "Apache-2.0",
+      "out": "a scripts or tooling folder in your project",
+      "files": [
+        {
+          "from": "splints/canon-json.mjs",
+          "to": "canon-json.mjs"
+        }
+      ]
+    },
+    {
+      "id": "splints/sign",
+      "name": "Ed25519 signing and verification utilities",
+      "format": "DRP",
+      "platform": "node",
+      "origin": "protocols tooling",
+      "license": "Apache-2.0",
+      "out": "a scripts or tooling folder in your project",
+      "files": [
+        {
+          "from": "splints/sign.mjs",
+          "to": "sign.mjs"
+        },
+        {
+          "from": "splints/canon-json.mjs",
+          "to": "canon-json.mjs"
+        }
+      ]
+    },
+    {
+      "id": "splints/serve",
+      "name": "Zero-dependency static dist preview server",
+      "format": "DRP",
+      "platform": "node",
+      "origin": "protocols tooling",
+      "license": "Apache-2.0",
+      "out": "a scripts or tooling folder in your project",
+      "files": [
+        {
+          "from": "splints/serve.mjs",
+          "to": "serve.mjs"
+        }
+      ]
+    },
+    {
+      "id": "splints/contrast",
+      "name": "WCAG color contrast ratio checker",
+      "format": "DRP",
+      "platform": "node",
+      "origin": "protocols tooling",
+      "license": "Apache-2.0",
+      "out": "a scripts or tooling folder in your project",
+      "files": [
+        {
+          "from": "splints/contrast.mjs",
+          "to": "contrast.mjs"
+        }
+      ]
+    }
+  ]
+}

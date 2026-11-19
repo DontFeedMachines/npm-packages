@@ -1,22 +1,54 @@
 {
   "name": "@dontfeedmachines/fieldkit",
-  "version": "0.4.2",
-  "description": "shared Astro components, base CSS, elements, and build helpers for DontFeedMachines sites.",
+  "version": "0.5.0",
+  "description": "the full DFM field kit: Astro components, web components, typescript libraries, build helpers, and every pouch of themes, starters, plugins and fonts",
   "license": "Apache-2.0",
-  "homepage": "https://dontfeedmachines.com",
+  "homepage": "https://fieldkit.dfm.tools",
+  "keywords": [
+    "astro-component",
+    "withastro",
+    "starlight",
+    "astro",
+    "themes",
+    "obsidian",
+    "wordpress",
+    "ghost",
+    "hugo"
+  ],
   "type": "module",
   "files": [
     "config",
     "css",
-    "pouches",
+    "pouches/manifest.json",
+    "pouches/sutures/astro",
+    "pouches/dressings/dfm-all-css/skins.css",
+    "pouches/spools/3rd-party-fonts/atkinson-hyperlegible-mono/AtkinsonHyperlegibleMono-Regular.woff2",
+    "pouches/spools/3rd-party-fonts/atkinson-hyperlegible-mono/OFL.txt",
+    "pouches/spools/3rd-party-fonts/atkinson-hyperlegible-next/AtkinsonHyperlegibleNext-Regular.woff2",
+    "pouches/spools/3rd-party-fonts/atkinson-hyperlegible-next/AtkinsonHyperlegibleNext-Bold.woff2",
+    "pouches/spools/3rd-party-fonts/atkinson-hyperlegible-next/OFL.txt",
+    "pouches/spools/3rd-party-fonts/bedstead/bedstead-bold.otf",
+    "pouches/spools/3rd-party-fonts/bedstead/COPYING",
+    "pouches/spools/3rd-party-fonts/spectral/Spectral-Regular.ttf",
+    "pouches/spools/3rd-party-fonts/spectral/OFL.txt",
+    "pouches/spools/3rd-party-fonts/spline-sans-mono/SplineSansMono-Regular.ttf",
+    "pouches/spools/3rd-party-fonts/spline-sans-mono/OFL.txt",
+    "pouches/spools/3rd-party-fonts/vt323/VT323-Regular.ttf",
+    "pouches/spools/3rd-party-fonts/vt323/OFL.txt",
+    "!**/.DS_Store",
     "src",
     "LICENSE",
     "NOTICE",
-    "README.md",
-    "CHANGELOG.md"
+    "CREDITS.md",
+    "docs/CHANGELOG.md",
+    "README.md"
   ],
   "exports": {
     "./base.css": "./css/base.css",
+    "./teletext-chars.css": "./css/teletext-chars.css",
+    "./fonts/*": "./pouches/spools/3rd-party-fonts/*",
+    "./skins.css": "./pouches/dressings/dfm-all-css/skins.css",
+    "./pouches/manifest.json": "./pouches/manifest.json",
     "./elements": "./src/elements.ts",
     "./lib/*": "./src/lib/*.ts",
     "./node/*": "./src/node/*.ts",
@@ -26,6 +58,7 @@
   },
   "dependencies": {
     "@noble/ed25519": "3.2.0",
+    "@pagefind/default-ui": "1.5.2",
     "figlet": "1.12.0",
     "marked": "18.0.14"
   },
@@ -43,5 +76,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "test": "node --check bin/fieldkit.mjs pouches/splints/*.mjs src/node/seal.ts && node --test test/teletext-chars.test.ts"
   }
 }

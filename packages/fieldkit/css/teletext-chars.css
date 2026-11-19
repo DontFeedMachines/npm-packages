@@ -1,0 +1,165 @@
+@property --tt-char-start {
+  syntax: "*";
+  inherits: false;
+}
+
+@property --tt-char-end {
+  syntax: "*";
+  inherits: false;
+}
+
+:root {
+  --tt-glyph-external: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M5%200h4v1h-4zM7%201h2v1h-2zM0%202h4v1h-4zM6%202h1v1h-1zM8%202h1v1h-1zM0%203h1v1h-1zM5%203h1v1h-1zM8%203h1v1h-1zM0%204h1v1h-1zM4%204h1v1h-1zM0%205h1v1h-1zM8%205h1v1h-1zM0%206h1v1h-1zM8%206h1v1h-1zM0%207h1v1h-1zM8%207h1v1h-1zM0%208h9v1h-9z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-arrow-ne: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M3%201h5v1h-5zM6%202h2v1h-2zM5%203h1v1h-1zM7%203h1v1h-1zM4%204h1v1h-1zM7%204h1v1h-1zM3%205h1v1h-1zM7%205h1v1h-1zM2%206h1v1h-1zM1%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-arrow-up: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M4%200h1v1h-1zM3%201h3v1h-3zM2%202h1v1h-1zM4%202h1v1h-1zM6%202h1v1h-1zM1%203h1v1h-1zM4%203h1v1h-1zM7%203h1v1h-1zM4%204h1v1h-1zM4%205h1v1h-1zM4%206h1v1h-1zM4%207h1v1h-1zM4%208h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-arrow-down: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M4%200h1v1h-1zM4%201h1v1h-1zM4%202h1v1h-1zM4%203h1v1h-1zM4%204h1v1h-1zM1%205h1v1h-1zM4%205h1v1h-1zM7%205h1v1h-1zM2%206h1v1h-1zM4%206h1v1h-1zM6%206h1v1h-1zM3%207h3v1h-3zM4%208h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-arrow-left: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M3%201h1v1h-1zM2%202h1v1h-1zM1%203h1v1h-1zM0%204h9v1h-9zM1%205h1v1h-1zM2%206h1v1h-1zM3%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-arrow-right: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M5%201h1v1h-1zM6%202h1v1h-1zM7%203h1v1h-1zM0%204h9v1h-9zM7%205h1v1h-1zM6%206h1v1h-1zM5%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-corner-ur: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M5%200h1v1h-1zM4%201h3v1h-3zM3%202h1v1h-1zM5%202h1v1h-1zM7%202h1v1h-1zM5%203h1v1h-1zM5%204h1v1h-1zM5%205h1v1h-1zM4%206h1v1h-1zM1%207h3v1h-3z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-check: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M8%201h1v1h-1zM7%202h2v1h-2zM6%203h2v1h-2zM1%204h1v1h-1zM5%204h2v1h-2zM1%205h2v1h-2zM4%205h2v1h-2zM2%206h3v1h-3zM3%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-cross: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M1%201h1v1h-1zM7%201h1v1h-1zM2%202h1v1h-1zM6%202h1v1h-1zM3%203h1v1h-1zM5%203h1v1h-1zM4%204h1v1h-1zM3%205h1v1h-1zM5%205h1v1h-1zM2%206h1v1h-1zM6%206h1v1h-1zM1%207h1v1h-1zM7%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-warn: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M4%200h1v1h-1zM3%201h1v1h-1zM5%201h1v1h-1zM3%202h1v1h-1zM5%202h1v1h-1zM2%203h1v1h-1zM4%203h1v1h-1zM6%203h1v1h-1zM2%204h1v1h-1zM4%204h1v1h-1zM6%204h1v1h-1zM1%205h1v1h-1zM4%205h1v1h-1zM7%205h1v1h-1zM1%206h1v1h-1zM7%206h1v1h-1zM0%207h1v1h-1zM4%207h1v1h-1zM8%207h1v1h-1zM0%208h9v1h-9z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-info: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M1%200h7v1h-7zM0%201h1v1h-1zM8%201h1v1h-1zM0%202h1v1h-1zM4%202h1v1h-1zM8%202h1v1h-1zM0%203h1v1h-1zM8%203h1v1h-1zM0%204h1v1h-1zM4%204h1v1h-1zM8%204h1v1h-1zM0%205h1v1h-1zM4%205h1v1h-1zM8%205h1v1h-1zM0%206h1v1h-1zM4%206h1v1h-1zM8%206h1v1h-1zM0%207h1v1h-1zM8%207h1v1h-1zM1%208h7v1h-7z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-lock: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M3%200h3v1h-3zM2%201h1v1h-1zM6%201h1v1h-1zM2%202h1v1h-1zM6%202h1v1h-1zM1%203h7v1h-7zM1%204h7v1h-7zM1%205h3v1h-3zM5%205h3v1h-3zM1%206h3v1h-3zM5%206h3v1h-3zM1%207h7v1h-7z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-rss: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M0%200h4v1h-4zM4%201h2v1h-2zM6%202h1v1h-1zM0%203h3v1h-3zM7%203h1v1h-1zM3%204h1v1h-1zM8%204h1v1h-1zM4%205h1v1h-1zM8%205h1v1h-1zM0%206h2v1h-2zM5%206h1v1h-1zM8%206h1v1h-1zM0%207h2v1h-2zM5%207h1v1h-1zM8%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-search: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M2%200h4v1h-4zM1%201h1v1h-1zM6%201h1v1h-1zM0%202h1v1h-1zM7%202h1v1h-1zM0%203h1v1h-1zM7%203h1v1h-1zM0%204h1v1h-1zM7%204h1v1h-1zM1%205h1v1h-1zM6%205h1v1h-1zM2%206h5v1h-5zM7%207h1v1h-1zM8%208h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+  --tt-glyph-star: url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%209%209'%20fill%3D'black'%20shape-rendering%3D'crispEdges'%3E%3Cpath%20d%3D'M4%200h1v1h-1zM4%201h1v1h-1zM2%202h5v1h-5zM0%203h9v1h-9zM2%204h5v1h-5zM2%205h2v1h-2zM5%205h2v1h-2zM1%206h1v1h-1zM7%206h1v1h-1zM0%207h1v1h-1zM8%207h1v1h-1z'%2F%3E%3C%2Fsvg%3E");
+}
+
+@container style(--tt-char-start) {
+  ::before {
+    --tt-char-start: inherit;
+    content: "" / var(--tt-char-alt, "");
+    display: inline-block;
+    width: var(--tt-char-size, 0.85em);
+    height: var(--tt-char-size, 0.85em);
+    background-color: var(--tt-char-color, currentColor);
+    mask: var(--tt-char-start) no-repeat center / contain;
+    vertical-align: calc(0.5cap - var(--tt-char-size, 0.85em) / 2 + var(--tt-char-voffset, -0.02em));
+    flex: none;
+    pointer-events: none;
+    forced-color-adjust: none;
+  }
+
+  :where(:not(.tt-char-only, :empty))::before {
+    margin-inline-end: var(--tt-char-spacing, 0.35em);
+  }
+}
+
+@container style(--tt-char-end) {
+  ::after {
+    --tt-char-end: inherit;
+    content: "" / var(--tt-char-alt, "");
+    display: inline-block;
+    width: var(--tt-char-size, 0.85em);
+    height: var(--tt-char-size, 0.85em);
+    background-color: var(--tt-char-color, currentColor);
+    mask: var(--tt-char-end) no-repeat center / contain;
+    vertical-align: calc(0.5cap - var(--tt-char-size, 0.85em) / 2 + var(--tt-char-voffset, -0.02em));
+    flex: none;
+    pointer-events: none;
+    forced-color-adjust: none;
+  }
+
+  :where(:not(.tt-char-only, :empty))::after {
+    margin-inline-start: var(--tt-char-spacing, 0.35em);
+  }
+}
+
+/* attribute hooks fallback when container style queries are absent */
+:where([data-tt-start], .tt-char-only:empty)::before {
+  content: image-set(linear-gradient(transparent 0 100%), var(--tt-char-start)) / var(--tt-char-alt, "");
+  display: inline-block;
+  width: var(--tt-char-size, 0.85em);
+  height: var(--tt-char-size, 0.85em);
+  background-color: var(--tt-char-color, currentColor);
+  mask: var(--tt-char-start) no-repeat center / contain;
+  vertical-align: calc(0.5cap - var(--tt-char-size, 0.85em) / 2 + var(--tt-char-voffset, -0.02em));
+  flex: none;
+  pointer-events: none;
+  forced-color-adjust: none;
+}
+
+:where([data-tt-start]:not(.tt-char-only, :empty))::before {
+  margin-inline-end: var(--tt-char-spacing, 0.35em);
+}
+
+:where([data-tt-end])::after {
+  content: image-set(linear-gradient(transparent 0 100%), var(--tt-char-end)) / var(--tt-char-alt, "");
+  display: inline-block;
+  width: var(--tt-char-size, 0.85em);
+  height: var(--tt-char-size, 0.85em);
+  background-color: var(--tt-char-color, currentColor);
+  mask: var(--tt-char-end) no-repeat center / contain;
+  vertical-align: calc(0.5cap - var(--tt-char-size, 0.85em) / 2 + var(--tt-char-voffset, -0.02em));
+  flex: none;
+  pointer-events: none;
+  forced-color-adjust: none;
+}
+
+:where([data-tt-end]:not(.tt-char-only, :empty))::after {
+  margin-inline-start: var(--tt-char-spacing, 0.35em);
+}
+
+.tt-char-only:empty {
+  --tt-char-start: var(--tt-char);
+}
+
+[data-tt-start="external"] { --tt-char-start: var(--tt-glyph-external); }
+[data-tt-start="arrow-ne"] { --tt-char-start: var(--tt-glyph-arrow-ne); }
+[data-tt-start="arrow-up"] { --tt-char-start: var(--tt-glyph-arrow-up); }
+[data-tt-start="arrow-down"] { --tt-char-start: var(--tt-glyph-arrow-down); }
+[data-tt-start="arrow-left"] { --tt-char-start: var(--tt-glyph-arrow-left); }
+[data-tt-start="arrow-right"] { --tt-char-start: var(--tt-glyph-arrow-right); }
+[data-tt-start="corner-ur"] { --tt-char-start: var(--tt-glyph-corner-ur); }
+[data-tt-start="check"] { --tt-char-start: var(--tt-glyph-check); }
+[data-tt-start="cross"] { --tt-char-start: var(--tt-glyph-cross); }
+[data-tt-start="warn"] { --tt-char-start: var(--tt-glyph-warn); }
+[data-tt-start="info"] { --tt-char-start: var(--tt-glyph-info); }
+[data-tt-start="lock"] { --tt-char-start: var(--tt-glyph-lock); }
+[data-tt-start="rss"] { --tt-char-start: var(--tt-glyph-rss); }
+[data-tt-start="search"] { --tt-char-start: var(--tt-glyph-search); }
+[data-tt-start="star"] { --tt-char-start: var(--tt-glyph-star); }
+
+[data-tt-end="external"] { --tt-char-end: var(--tt-glyph-external); }
+[data-tt-end="arrow-ne"] { --tt-char-end: var(--tt-glyph-arrow-ne); }
+[data-tt-end="arrow-up"] { --tt-char-end: var(--tt-glyph-arrow-up); }
+[data-tt-end="arrow-down"] { --tt-char-end: var(--tt-glyph-arrow-down); }
+[data-tt-end="arrow-left"] { --tt-char-end: var(--tt-glyph-arrow-left); }
+[data-tt-end="arrow-right"] { --tt-char-end: var(--tt-glyph-arrow-right); }
+[data-tt-end="corner-ur"] { --tt-char-end: var(--tt-glyph-corner-ur); }
+[data-tt-end="check"] { --tt-char-end: var(--tt-glyph-check); }
+[data-tt-end="cross"] { --tt-char-end: var(--tt-glyph-cross); }
+[data-tt-end="warn"] { --tt-char-end: var(--tt-glyph-warn); }
+[data-tt-end="info"] { --tt-char-end: var(--tt-glyph-info); }
+[data-tt-end="lock"] { --tt-char-end: var(--tt-glyph-lock); }
+[data-tt-end="rss"] { --tt-char-end: var(--tt-glyph-rss); }
+[data-tt-end="search"] { --tt-char-end: var(--tt-glyph-search); }
+[data-tt-end="star"] { --tt-char-end: var(--tt-glyph-star); }
+
+/* webkit 301609 / 320220 / 325900 mask repaint + inheritance workaround */
+@keyframes tt-webkit-301609 {}
+
+@supports ((-webkit-nbsp-mode: normal) or (-webkit-touch-callout: none) or (font: -apple-system-body)) and (content-visibility: auto) {
+  @property --tt-char-start {
+    syntax: "*";
+    inherits: true;
+  }
+
+  @property --tt-char-end {
+    syntax: "*";
+    inherits: true;
+  }
+
+  @layer tt-webkit-fix {
+    @container style(--tt-char-start) {
+      ::before { animation: tt-webkit-301609 0s; }
+      * { --tt-char-start: initial; }
+    }
+
+    @container style(--tt-char-end) {
+      ::after { animation: tt-webkit-301609 0s; }
+      * { --tt-char-end: initial; }
+    }
+  }
+}

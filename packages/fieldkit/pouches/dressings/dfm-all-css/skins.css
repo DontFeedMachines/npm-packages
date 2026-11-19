@@ -1,0 +1,237 @@
+/*
+  every DFM sector, station and commons site as a fieldkit skin, light and dark.
+  set data-skin="<site>" and data-mode="light|dark" on <html>.
+  the original stylesheet each skin was read from sits in sites/<site>/source/.
+  a mode marked "drawn" did not exist on the live site and was made for the kit.
+
+  roles: canvas ground · ink text · paper cards · oak masthead · on-oak · oak-hi masthead accent
+  felt bar · on-felt · hi highlight fill · on-hi · hi-text accent as text · stamp alert · muted
+  night stage · on-night · night-hi · field inputs · on-field · rule · shadow · grain
+  fonts: --display --label --body. a skin names its own fonts; the site has to load them.
+*/
+
+/* dfm-main: teletext dark is live, light drawn from the help skin */
+[data-skin="dfm-main"][data-mode="dark"] {
+  --canvas: #111111; --ink: #f2f2f2; --paper: #000000; --oak: #0000ff; --on-oak: #ffff00; --oak-hi: #00ffff;
+  --felt: #000000; --on-felt: #ffffff; --hi: #ffff00; --on-hi: #000000; --hi-text: #00ffff; --stamp: #ff0000; --muted: #bbbbbb;
+  --night: #000000; --on-night: #f2f2f2; --night-hi: #00ff00; --field: #000000; --on-field: #f2f2f2; --rule: #4a4a4a; --shadow: #0000ff; --grain: #222222;
+  --display: "Teletext50", "VT323", monospace; --label: "Teletext50", ui-monospace, monospace; --body: "Spline Sans Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+[data-skin="dfm-main"][data-mode="light"] {
+  --canvas: #ffffff; --ink: #000000; --paper: #f1f1f1; --oak: #0000ff; --on-oak: #ffffff; --oak-hi: #ffff00;
+  --felt: #000000; --on-felt: #ffffff; --hi: #ffff00; --on-hi: #000000; --hi-text: #0000ff; --stamp: #c40000; --muted: #3d3d3d;
+  --night: #000000; --on-night: #f2f2f2; --night-hi: #00ff00; --field: #ffffff; --on-field: #000000; --rule: #000000; --shadow: #000000; --grain: #eeeeee;
+  --display: "Teletext50", "VT323", monospace; --label: "Teletext50", ui-monospace, monospace; --body: "Spline Sans Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+
+/* flockbuster: video store navy is live as dark, light drawn as the receipt paper */
+[data-skin="flockbuster"][data-mode="dark"] {
+  --canvas: #0b1a59; --ink: #f4ede0; --paper: #050d2e; --oak: #ffd100; --on-oak: #0b1a59; --oak-hi: #e01a59;
+  --felt: #030821; --on-felt: #f4ede0; --hi: #ffd100; --on-hi: #0b1a59; --hi-text: #ffd100; --stamp: #ff3b30; --muted: #9cb0d9;
+  --night: #030821; --on-night: #f4ede0; --night-hi: #ffd100; --field: #030821; --on-field: #f4ede0; --rule: #33427f; --shadow: #000000; --grain: #13246e;
+  --display: "Cooper Black", Georgia, serif; --label: "OCR-A", ui-monospace, monospace; --body: "OCR-A", ui-monospace, monospace;
+  color-scheme: dark;
+}
+[data-skin="flockbuster"][data-mode="light"] {
+  --canvas: #fcf9f2; --ink: #0b1a59; --paper: #ffffff; --oak: #0b1a59; --on-oak: #ffd100; --oak-hi: #ffd100;
+  --felt: #ffd100; --on-felt: #0b1a59; --hi: #ffd100; --on-hi: #0b1a59; --hi-text: #b3123f; --stamp: #c4122e; --muted: #3d4a7a;
+  --night: #050d2e; --on-night: #f4ede0; --night-hi: #ffd100; --field: #ffffff; --on-field: #0b1a59; --rule: #9cb0d9; --shadow: #0b1a59; --grain: #e0e5ed;
+  --display: "Cooper Black", Georgia, serif; --label: "OCR-A", ui-monospace, monospace; --body: "OCR-A", ui-monospace, monospace;
+  color-scheme: light;
+}
+
+/* humanlayer: both modes live */
+[data-skin="humanlayer"][data-mode="light"] {
+  --canvas: #ecebe6; --ink: #111010; --paper: #f7f6f2; --oak: #111010; --on-oak: #f7f6f2; --oak-hi: #d6f23a;
+  --felt: #24603a; --on-felt: #f7f6f2; --hi: #d6f23a; --on-hi: #111010; --hi-text: #24603a; --stamp: #c3141f; --muted: #5a5550;
+  --night: #111010; --on-night: #f7f6f2; --night-hi: #d6f23a; --field: #ffffff; --on-field: #111010; --rule: #c9c5bd; --shadow: #111010; --grain: #b3afa8;
+  --display: "HL Iso", "Helvetica Neue", Helvetica, Arial, sans-serif; --label: "IBM Plex Mono", ui-monospace, monospace; --body: "Newsreader", Georgia, serif;
+  color-scheme: light;
+}
+[data-skin="humanlayer"][data-mode="dark"] {
+  --canvas: #121110; --ink: #eeece6; --paper: #1b1a18; --oak: #000000; --on-oak: #eeece6; --oak-hi: #d6f23a;
+  --felt: #1a3f27; --on-felt: #eeece6; --hi: #d6f23a; --on-hi: #111010; --hi-text: #d6f23a; --stamp: #ff6b6b; --muted: #aaa59d;
+  --night: #000000; --on-night: #eeece6; --night-hi: #d6f23a; --field: #0c0b0a; --on-field: #eeece6; --rule: #3a3733; --shadow: #000000; --grain: #3d3a36;
+  --display: "HL Iso", "Helvetica Neue", Helvetica, Arial, sans-serif; --label: "IBM Plex Mono", ui-monospace, monospace; --body: "Newsreader", Georgia, serif;
+  color-scheme: dark;
+}
+
+/* poisongarden: soil dark is live, light drawn as vellum */
+[data-skin="poisongarden"][data-mode="dark"] {
+  --canvas: #0e0f0b; --ink: #e8e0c8; --paper: #1a1a17; --oak: #221424; --on-oak: #e8e0c8; --oak-hi: #b8ff00;
+  --felt: #3f5a2c; --on-felt: #f1eee3; --hi: #b8ff00; --on-hi: #0e0f0b; --hi-text: #b8ff00; --stamp: #e83d84; --muted: #9fb39a;
+  --night: #0e0f0b; --on-night: #e8e0c8; --night-hi: #4ef2d2; --field: #1d2417; --on-field: #e8e0c8; --rule: #3a352a; --shadow: #000000; --grain: #1d2417;
+  --display: "Reftilian", "IM Fell Great Primer SC", serif; --label: "IM Fell Great Primer SC", Georgia, serif; --body: "IM Fell Double Pica", Georgia, serif;
+  color-scheme: dark;
+}
+[data-skin="poisongarden"][data-mode="light"] {
+  --canvas: #d9cfae; --ink: #1c1a12; --paper: #f1eee3; --oak: #3f5a2c; --on-oak: #f1eee3; --oak-hi: #c9a54a;
+  --felt: #221424; --on-felt: #e8e0c8; --hi: #3f5a2c; --on-hi: #f1eee3; --hi-text: #6b1414; --stamp: #7a1a12; --muted: #4a4532;
+  --night: #0e0f0b; --on-night: #e8e0c8; --night-hi: #b8ff00; --field: #fbf9f2; --on-field: #1c1a12; --rule: #a89d7a; --shadow: #3f5a2c; --grain: #c4b892;
+  --display: "Reftilian", "IM Fell Great Primer SC", serif; --label: "IM Fell Great Primer SC", Georgia, serif; --body: "IM Fell Double Pica", Georgia, serif;
+  color-scheme: light;
+}
+
+/* porchlights: desk light is live, dark drawn from its own dusk and screen */
+[data-skin="porchlights"][data-mode="light"] {
+  --canvas: #bfe9e0; --ink: #111316; --paper: #ffffff; --oak: #1d4b56; --on-oak: #eceef0; --oak-hi: #f7b8cf;
+  --felt: #eceef0; --on-felt: #111316; --hi: #7fd1c3; --on-hi: #111316; --hi-text: #1f6f74; --stamp: #b3124a; --muted: #5a5f66;
+  --night: #0b1a1f; --on-night: #eceef0; --night-hi: #9ff0dc; --field: #ffffff; --on-field: #111316; --rule: #c4c9cd; --shadow: #1d4b56; --grain: #a3dccd;
+  --display: "Mister Pixel", Geneva, Verdana, sans-serif; --label: "Topaz-8", ui-monospace, monospace; --body: "Courier Prime", "Courier New", monospace;
+  color-scheme: light;
+}
+[data-skin="porchlights"][data-mode="dark"] {
+  --canvas: #1d4b56; --ink: #eceef0; --paper: #163c46; --oak: #0b1a1f; --on-oak: #9ff0dc; --oak-hi: #f7b8cf;
+  --felt: #0b1a1f; --on-felt: #eceef0; --hi: #9ff0dc; --on-hi: #0b1a1f; --hi-text: #9ff0dc; --stamp: #f7b8cf; --muted: #c4c9cd;
+  --night: #0b1a1f; --on-night: #eceef0; --night-hi: #9ff0dc; --field: #0b1a1f; --on-field: #eceef0; --rule: #3b6873; --shadow: #000000; --grain: #163c46;
+  --display: "Mister Pixel", Geneva, Verdana, sans-serif; --label: "Topaz-8", ui-monospace, monospace; --body: "Courier Prime", "Courier New", monospace;
+  color-scheme: dark;
+}
+
+/* stopthescrape: paper light is live, dark drawn as the inverse */
+[data-skin="stopthescrape"][data-mode="light"] {
+  --canvas: #ffffff; --ink: #000000; --paper: #ffffff; --oak: #000000; --on-oak: #ffffff; --oak-hi: #d7263d;
+  --felt: #000000; --on-felt: #ffffff; --hi: #000000; --on-hi: #ffffff; --hi-text: #b51d31; --stamp: #d7263d; --muted: #555555;
+  --night: #000000; --on-night: #ffffff; --night-hi: #d7263d; --field: #ffffff; --on-field: #000000; --rule: #999999; --shadow: #000000; --grain: #eeeeee;
+  --display: "Eater", cursive; --label: "Courier Prime", "Courier New", monospace; --body: "Cabin Sketch", cursive;
+  color-scheme: light;
+}
+[data-skin="stopthescrape"][data-mode="dark"] {
+  --canvas: #000000; --ink: #f2f2f2; --paper: #0d0d0d; --oak: #ffffff; --on-oak: #000000; --oak-hi: #d7263d;
+  --felt: #1a1a1a; --on-felt: #ffffff; --hi: #ffffff; --on-hi: #000000; --hi-text: #ff5a6e; --stamp: #ff5a6e; --muted: #b0b0b0;
+  --night: #000000; --on-night: #ffffff; --night-hi: #ff5a6e; --field: #111111; --on-field: #f2f2f2; --rule: #555555; --shadow: #d7263d; --grain: #151515;
+  --display: "Eater", cursive; --label: "Courier Prime", "Courier New", monospace; --body: "Cabin Sketch", cursive;
+  color-scheme: dark;
+}
+
+/* sweetspot: frosting light is live, dark drawn from its night */
+[data-skin="sweetspot"][data-mode="light"] {
+  --canvas: #fff3fb; --ink: #1a1f5c; --paper: #ffffff; --oak: #ff4fa3; --on-oak: #111111; --oak-hi: #fff27a;
+  --felt: #c9b6f2; --on-felt: #1a1f5c; --hi: #c6ff3d; --on-hi: #1a1f5c; --hi-text: #b3006b; --stamp: #d1003f; --muted: #4b4f86;
+  --night: #0b0412; --on-night: #fff3fb; --night-hi: #c6ff3d; --field: #ffffff; --on-field: #1a1f5c; --rule: #c9b6f2; --shadow: #1a1f5c; --grain: #ffd6ee;
+  --display: "Bubble Shack", ui-rounded, "Arial Rounded MT Bold", sans-serif; --label: "Public Pixel", ui-monospace, monospace; --body: "Trebuchet MS", Verdana, sans-serif;
+  color-scheme: light;
+}
+[data-skin="sweetspot"][data-mode="dark"] {
+  --canvas: #0b0412; --ink: #fff3fb; --paper: #1a0f26; --oak: #ff4fa3; --on-oak: #111111; --oak-hi: #c6ff3d;
+  --felt: #2a1840; --on-felt: #fff3fb; --hi: #c6ff3d; --on-hi: #111111; --hi-text: #ff8cc6; --stamp: #ff5c8a; --muted: #c9b6f2;
+  --night: #000000; --on-night: #fff3fb; --night-hi: #8fd3ff; --field: #12081c; --on-field: #fff3fb; --rule: #4a3570; --shadow: #ff4fa3; --grain: #1a0f26;
+  --display: "Bubble Shack", ui-rounded, "Arial Rounded MT Bold", sans-serif; --label: "Public Pixel", ui-monospace, monospace; --body: "Trebuchet MS", Verdana, sans-serif;
+  color-scheme: dark;
+}
+
+/* synthstop: sky light is live, dark drawn as the synth night */
+[data-skin="synthstop"][data-mode="light"] {
+  --canvas: #d9e6ff; --ink: #1a2bc8; --paper: #fffdf7; --oak: #1a2bc8; --on-oak: #fffdf7; --oak-hi: #ffe066;
+  --felt: #3fc4e0; --on-felt: #0a2a6e; --hi: #ff5c9d; --on-hi: #1a1a40; --hi-text: #b3175a; --stamp: #d01f5a; --muted: #3b46a0;
+  --night: #1a2bc8; --on-night: #fffdf7; --night-hi: #ffe066; --field: #f4f7ff; --on-field: #1a2bc8; --rule: #b9c6f0; --shadow: #1a2bc8; --grain: #f1f4ff;
+  --display: "Belkon Pixel", "Saira", sans-serif; --label: "Azeret Mono", ui-monospace, monospace; --body: "Saira", system-ui, sans-serif;
+  color-scheme: light;
+}
+[data-skin="synthstop"][data-mode="dark"] {
+  --canvas: #0a0f3d; --ink: #e8ecff; --paper: #121a5c; --oak: #050826; --on-oak: #ffe066; --oak-hi: #ff5c9d;
+  --felt: #1a2bc8; --on-felt: #fffdf7; --hi: #3fc4e0; --on-hi: #050826; --hi-text: #ff8cbd; --stamp: #ff5c9d; --muted: #aab4f0;
+  --night: #050826; --on-night: #e8ecff; --night-hi: #ffe066; --field: #070b30; --on-field: #e8ecff; --rule: #2e3a9a; --shadow: #000000; --grain: #121a5c;
+  --display: "Belkon Pixel", "Saira", sans-serif; --label: "Azeret Mono", ui-monospace, monospace; --body: "Saira", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+/* the-leash: both live (data-inv on the site); spot lime */
+[data-skin="the-leash"][data-mode="dark"] {
+  --canvas: #000000; --ink: #f2f2ee; --paper: #0b0b0a; --oak: #000000; --on-oak: #f2f2ee; --oak-hi: #c8ff2e;
+  --felt: #c8ff2e; --on-felt: #000000; --hi: #c8ff2e; --on-hi: #000000; --hi-text: #c8ff2e; --stamp: #ff3b1f; --muted: #b4b4ae;
+  --night: #000000; --on-night: #f2f2ee; --night-hi: #c8ff2e; --field: #0b0b0a; --on-field: #f2f2ee; --rule: rgba(242, 242, 238, .42); --shadow: #c8ff2e; --grain: #141414;
+  --display: "Pirata One", "UnifrakturMaguntia", serif; --label: "Azeret Mono", ui-monospace, monospace; --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+[data-skin="the-leash"][data-mode="light"] {
+  --canvas: #f2f2ee; --ink: #000000; --paper: #ffffff; --oak: #000000; --on-oak: #f2f2ee; --oak-hi: #c8ff2e;
+  --felt: #000000; --on-felt: #c8ff2e; --hi: #c8ff2e; --on-hi: #000000; --hi-text: #3d5a00; --stamp: #b81e00; --muted: #3c3c3a;
+  --night: #000000; --on-night: #f2f2ee; --night-hi: #c8ff2e; --field: #ffffff; --on-field: #000000; --rule: rgba(0, 0, 0, .45); --shadow: #000000; --grain: #e2e2dc;
+  --display: "Pirata One", "UnifrakturMaguntia", serif; --label: "Azeret Mono", ui-monospace, monospace; --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+/* voidops: void dark is live, light drawn as bone */
+[data-skin="voidops"][data-mode="dark"] {
+  --canvas: #070707; --ink: #ece6d6; --paper: #141312; --oak: #141312; --on-oak: #ece6d6; --oak-hi: #ff3b2f;
+  --felt: #1d1b19; --on-felt: #ece6d6; --hi: #b6ff3b; --on-hi: #070707; --hi-text: #b6ff3b; --stamp: #ff3b2f; --muted: #bdb3a0;
+  --night: #070707; --on-night: #ece6d6; --night-hi: #b6ff3b; --field: #0d0c0b; --on-field: #ece6d6; --rule: #3a3530; --shadow: #b3261e; --grain: #141312;
+  --display: "Jacquard Charted", "GothicByte", Georgia, serif; --label: "Pixelta", ui-monospace, monospace; --body: ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+[data-skin="voidops"][data-mode="light"] {
+  --canvas: #ece6d6; --ink: #070707; --paper: #f6f2e8; --oak: #070707; --on-oak: #ece6d6; --oak-hi: #ff3b2f;
+  --felt: #b3261e; --on-felt: #f6f2e8; --hi: #b3261e; --on-hi: #f6f2e8; --hi-text: #8f1d17; --stamp: #b3261e; --muted: #4a443c;
+  --night: #070707; --on-night: #ece6d6; --night-hi: #b6ff3b; --field: #ffffff; --on-field: #070707; --rule: #bdb3a0; --shadow: #070707; --grain: #ddd5c2;
+  --display: "Jacquard Charted", "GothicByte", Georgia, serif; --label: "Pixelta", ui-monospace, monospace; --body: ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: light;
+}
+
+/* stations and commons that run the main teletext skin: dfm-resource, dfm-wiki, help, learn. both modes live */
+[data-skin="dfm-resource"][data-mode="dark"], [data-skin="dfm-wiki"][data-mode="dark"],
+[data-skin="help"][data-mode="dark"], [data-skin="learn"][data-mode="dark"] {
+  --canvas: #000000; --ink: #f2f2f2; --paper: #0d0d0d; --oak: #0000ff; --on-oak: #ffff00; --oak-hi: #00ffff;
+  --felt: #000000; --on-felt: #ffffff; --hi: #00ffff; --on-hi: #000000; --hi-text: #00ffff; --stamp: #ff8a8a; --muted: #b8b8b8;
+  --night: #000000; --on-night: #f2f2f2; --night-hi: #ffff00; --field: #141414; --on-field: #f2f2f2; --rule: #8a8a8a; --shadow: #0000ff; --grain: #141414;
+  --display: "Bedstead", ui-monospace, monospace; --label: "Bedstead", ui-monospace, monospace; --body: "Departure Mono", "Atkinson Hyperlegible Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+[data-skin="dfm-resource"][data-mode="light"], [data-skin="dfm-wiki"][data-mode="light"],
+[data-skin="help"][data-mode="light"], [data-skin="learn"][data-mode="light"] {
+  --canvas: #ffffff; --ink: #000000; --paper: #f1f1f1; --oak: #0000ff; --on-oak: #ffffff; --oak-hi: #ffff00;
+  --felt: #000000; --on-felt: #ffffff; --hi: #0000ff; --on-hi: #ffffff; --hi-text: #0000ff; --stamp: #a40000; --muted: #3d3d3d;
+  --night: #000000; --on-night: #f2f2f2; --night-hi: #ffff00; --field: #ffffff; --on-field: #000000; --rule: #000000; --shadow: #000000; --grain: #f1f1f1;
+  --display: "Bedstead", ui-monospace, monospace; --label: "Bedstead", ui-monospace, monospace; --body: "Departure Mono", "Atkinson Hyperlegible Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+
+/* dfm-tools: field paper light is live, dark drawn */
+[data-skin="dfm-tools"][data-mode="light"] {
+  --canvas: #f6f5f1; --ink: #111111; --paper: #ffffff; --oak: #111111; --on-oak: #f6f5f1; --oak-hi: #ff5a1f;
+  --felt: #111111; --on-felt: #f6f5f1; --hi: #ff5a1f; --on-hi: #111111; --hi-text: #b83a0c; --stamp: #c4400f; --muted: #4a4a46;
+  --night: #111111; --on-night: #f6f5f1; --night-hi: #ff5a1f; --field: #ffffff; --on-field: #111111; --rule: #c9c7c0; --shadow: #111111; --grain: #e8e6df;
+  --display: "Bebas", "Arial Narrow", sans-serif; --label: "Atk Mono", ui-monospace, monospace; --body: "Atk Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+[data-skin="dfm-tools"][data-mode="dark"] {
+  --canvas: #111111; --ink: #f6f5f1; --paper: #1a1a19; --oak: #000000; --on-oak: #f6f5f1; --oak-hi: #ff5a1f;
+  --felt: #ff5a1f; --on-felt: #111111; --hi: #ff5a1f; --on-hi: #111111; --hi-text: #ff8a5c; --stamp: #ff8a5c; --muted: #b5b3ac;
+  --night: #000000; --on-night: #f6f5f1; --night-hi: #ff5a1f; --field: #0b0b0b; --on-field: #f6f5f1; --rule: #3c3b37; --shadow: #000000; --grain: #1a1a19;
+  --display: "Bebas", "Arial Narrow", sans-serif; --label: "Atk Mono", ui-monospace, monospace; --body: "Atk Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+
+/* stats: chart light and room dark both live */
+[data-skin="stats"][data-mode="light"] {
+  --canvas: #d6d9dc; --ink: #1b1a17; --paper: #f6f1e4; --oak: #1d1d1d; --on-oak: #f6f1e4; --oak-hi: #e0b863;
+  --felt: #e8eaec; --on-felt: #1b1a17; --hi: #86601f; --on-hi: #ffffff; --hi-text: #4a2d7a; --stamp: #b3261e; --muted: #4a4e52;
+  --night: #1d1d1d; --on-night: #f6f1e4; --night-hi: #e6cfc8; --field: #ffffff; --on-field: #1b1a17; --rule: #6d6a62; --shadow: #1d1d1d; --grain: #e6cfc8;
+  --display: "Libre Franklin", "Arial Narrow", sans-serif; --label: "Azeret Mono", ui-monospace, monospace; --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color-scheme: light;
+}
+[data-skin="stats"][data-mode="dark"] {
+  --canvas: #14120f; --ink: #efe6d2; --paper: #1f1c17; --oak: #000000; --on-oak: #efe6d2; --oak-hi: #a07a3c;
+  --felt: #1f1c17; --on-felt: #efe6d2; --hi: #a07a3c; --on-hi: #0d0c0a; --hi-text: #cdb7f2; --stamp: #ff7a6b; --muted: #b8ae98;
+  --night: #0d0c0a; --on-night: #efe6d2; --night-hi: #b79af0; --field: #0d0c0a; --on-field: #efe6d2; --rule: #8a8272; --shadow: #000000; --grain: #1f1c17;
+  --display: "Libre Franklin", "Arial Narrow", sans-serif; --label: "Azeret Mono", ui-monospace, monospace; --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+/* refs: light table light and dark both live */
+[data-skin="refs"][data-mode="light"] {
+  --canvas: #fdfdf8; --ink: #1a1a1a; --paper: #f1efe9; --oak: #121212; --on-oak: #fdfdf8; --oak-hi: #e3a53c;
+  --felt: #121212; --on-felt: #e3a53c; --hi: #e3a53c; --on-hi: #121212; --hi-text: #a30d25; --stamp: #c8102e; --muted: #4a4742;
+  --night: #121212; --on-night: #fdfdf8; --night-hi: #e3a53c; --field: #ffffff; --on-field: #1a1a1a; --rule: #b9b5ab; --shadow: #121212; --grain: #ece9e1;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif; --label: "Overpass Mono", ui-monospace, monospace; --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color-scheme: light;
+}
+[data-skin="refs"][data-mode="dark"] {
+  --canvas: #121212; --ink: #ece9e1; --paper: #1c1b19; --oak: #000000; --on-oak: #ece9e1; --oak-hi: #e3a53c;
+  --felt: #1c1b19; --on-felt: #e3a53c; --hi: #e3a53c; --on-hi: #121212; --hi-text: #ff7a8a; --stamp: #ff7a8a; --muted: #b4b0a6;
+  --night: #000000; --on-night: #ece9e1; --night-hi: #e3a53c; --field: #0d0d0c; --on-field: #ece9e1; --rule: #4a4741; --shadow: #000000; --grain: #1c1b19;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif; --label: "Overpass Mono", ui-monospace, monospace; --body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  color-scheme: dark;
+}
