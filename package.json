@@ -1,6 +1,6 @@
 {
   "name": "dfm-npm-packages",
-  "version": 1,
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "publish:fieldkit": "pnpm --filter @dontfeedmachines/fieldkit publish --access public"

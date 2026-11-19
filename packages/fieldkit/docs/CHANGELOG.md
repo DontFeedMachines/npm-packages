@@ -15,7 +15,7 @@ this release ships only the parts the DFM sites need. every other pouch stays in
 - the `files` list names only the parts above, plus `config`, `css`, `src` and the Astro components.
 - `tool.json` carries the version.
 - the README lists only the exports and fonts in this package.
-- `CREDITS.md` covers only the third party parts in this package: DocKit, Starlight, the four libraries and the six font families.
+- `CREDITS.md` covers only the third party parts in this package: DocKit, Starlight, the four libraries and the six font families. it lives at `docs/CREDITS.md`, and the `files` list names it there.
 
 ### Removed
 
